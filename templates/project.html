@@ -1,0 +1,19 @@
+<article>
+    <section class="header">
+        Posted on: $date$
+        <br>
+        $if(description)$
+        Description : $description$
+        $endif$
+        <br>
+        <a href="$source$">source</a>
+          $if(site)$
+          - <a href="$site$">$site$</a>
+          $endif$
+    </section>
+    <div class="info">
+    </div>
+    <section>
+        $body$
+    </section>
+</article>
