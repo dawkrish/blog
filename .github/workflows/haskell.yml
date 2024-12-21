@@ -7,49 +7,64 @@ on:
     branches: [ "master" ]
 
 permissions:
-  contents: write
+  id-token: write
+  pages: write
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: haskell-actions/setup@v2 
-      with:
-        ghc-version: '9.4.8'
-      #   cabal-version: '3.2'
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Cache ~/.cabal/packages, ~/.cabal/store and dist-newstyle
-      uses: actions/cache@v4
-      with:
-        path: |
-          ~/.cabal/packages
-          ~/.cabal/store
-          dist-newstyle
-        key: ${{ runner.os }}-${{ matrix.ghc }}-${{ hashFiles('**/*.cabal', '**/cabal.project', '**/cabal.project.freeze') }}
-        restore-keys: ${{ runner.os }}-${{ matrix.ghc }}-
-            
-    - name: Install dependencies
-        # If we had an exact cache hit, the dependencies will be up to date.
-      if: steps.cache.outputs.cache-hit != 'true'
-      run: cabal build all --only-dependencies
-        
-    - name: Build
-      run: cabal build --enable-tests --enable-benchmarks all
-    - name:  Build Docs folder
-      run: cabal exec site rebuild 
+      # Step 2: Restore GHC cache
+      - name: Restore GHC cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.ghcup
+          key: ${{ runner.os }}-ghc-${{ matrix.ghc }}
+          restore-keys: ${{ runner.os }}-ghc-
 
-    - name: Setup Pages
-      uses: actions/configure-pages@v5.0.0
+      # Step 3: Set up Haskell environment
+      - name: Set up Haskell
+        uses: haskell-actions/setup@v2
+        with:
+          ghc-version: '9.4.8' # Adjust GHC version as needed
+          # cabal-version: '3.2' # Uncomment if Cabal version management is required
 
-    - name: Upload Artifacts
-      uses: actions/upload-pages-artifact@v3.0.1
-      with: 
-        path: 'docs/'
-    
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
-  
+      # Step 4: Restore Cabal cache
+      - name: Cache ~/.cabal/packages, ~/.cabal/store, and dist-newstyle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cabal/packages
+            ~/.cabal/store
+            dist-newstyle
+          key: ${{ runner.os }}-cabal-${{ hashFiles('**/*.cabal', '**/cabal.project', '**/cabal.project.freeze') }}
+          restore-keys: |
+            ${{ runner.os }}-cabal-
+
+      # Step 5: Build project and dependencies
+      - name: Build project
+        run: cabal build --enable-tests --enable-benchmarks all
+
+      # Step 6: Build documentation
+      - name: Build documentation
+        run: cabal exec site rebuild
+
+      # Step 7: Configure GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5.0.0
+
+      # Step 8: Upload artifacts
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3.0.1
+        with: 
+          path: 'docs/'
+
+      # Step 9: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
