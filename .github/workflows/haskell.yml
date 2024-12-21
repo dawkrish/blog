@@ -32,7 +32,7 @@ jobs:
         uses: haskell-actions/setup@v2
         with:
           ghc-version: '9.4.8' # Adjust GHC version as needed
-          cabal-version: '3.2' # Uncomment if Cabal version management is required
+          # cabal-version: '3.2' # Uncomment if Cabal version management is required
 
       # Step 4: Restore Cabal cache
       - name: Cache ~/.cabal/packages, ~/.cabal/store, and dist-newstyle
