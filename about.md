@@ -2,7 +2,10 @@
 title: About
 ---
 
-I am Krishnansh Agarwal, a student at IITM BS [(Online)](https://study.iitm.ac.in/ds/academics.html) in Data Science and Programming.
+I am Krishnansh Agarwal, a student at IITM BS in Data Science and Programming.
+
+I am currently working as Fullstack Intern at <a href='https://pazy.io'>Pazy</a>
+
 You can find me online with the handle `@dawkrish`.
 
 - [Github](https://www.github.com/dawkrish)
@@ -10,7 +13,7 @@ You can find me online with the handle `@dawkrish`.
 - [Twitter](https://www.twitter.com/dawkrish) [I don't use it much :/]
 - [Email](mailto:krishnansh710@gmail.com)
 
-I am a passionate student developer.
+I am a passionate developer and always eager to try new things (except AI-tools)
 I like building web apps and cli tools.
 
 My favourite topic currently is programming languages.
@@ -20,6 +23,14 @@ That said, here are my favourite languages:
 - Golang
 - Python
 
-I soon want to learn a lisp. I will read the [SICP](https://web.mit.edu/6.001/6.037/sicp.pdf) book, start with Scheme and then move to Clojure/Racket.
+## Other Interests
 
+I really like movies, and genre like horror, thriller and drama are my favourite!
+I use [letterboxd](https://www.boxd.it/dawkrish) to log and discover new movies.
 
+I also try to read, currently I am reading **The Poppy War**
+
+### Some of things I wanna do soon
+
+- Watch Chelsea FC play at Stamford Bridge
+- Contribute to tech world
