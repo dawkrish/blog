@@ -44,11 +44,11 @@ jobs:
             ${{ runner.os }}-cabal-
 
       # Step 5: Build project and dependencies
-      - name: Build project
+      - name: Build Dependencies
         run: cabal build --enable-tests --enable-benchmarks all
 
       # Step 6: Build documentation
-      - name: Build documentation
+      - name: Build Website
         run: cabal exec site rebuild
 
       # Step 7: Configure GitHub Pages
