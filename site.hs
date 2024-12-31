@@ -81,7 +81,7 @@ main = hakyll  $ do
         >>= loadAndApplyTemplate "templates/default.html" indexCtx
         >>= relativizeUrls
 
-  match "404.html" $ do
+  match "404.md" $ do
     route idRoute
     compile $
       pandocCompiler
