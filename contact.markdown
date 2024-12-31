@@ -2,7 +2,7 @@
 title: Contact
 ---
 
-You can mail me at <u>krishnansh710@gmail.com</u>
+I am always open for a friendly chat or a meaningful collaboration. You can mail me at <u>krishnansh710@gmail.com</u>
 
 I am also active in the following discord servers with the username `@dawkrish`
 

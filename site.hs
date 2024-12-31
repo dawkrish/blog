@@ -62,28 +62,6 @@ main = hakyll  $ do
         >>= loadAndApplyTemplate "templates/default.html" ctx
         >>= relativizeUrls
 
-  match "projects/*" $ do
-    route $ setExtension "html"
-    compile $
-      pandocCompiler
-        >>= loadAndApplyTemplate "templates/project.html" projectCtx
-        >>= loadAndApplyTemplate "templates/default.html" projectCtx
-        >>= relativizeUrls
-
-  create ["projects.html"] $ do
-    route idRoute
-    compile $ do
-      projects <- recentFirst =<< loadAll "projects/*"
-      let ctx =
-            listField "projects" postCtx (return projects)
-              `mappend` constField "title" "Projects"
-              `mappend` projectCtx
-
-      makeItem ""
-        >>= loadAndApplyTemplate "templates/projects.html" ctx
-        >>= loadAndApplyTemplate "templates/default.html" ctx
-        >>= relativizeUrls
-
   create ["css/syntax.css"] $ do
     route idRoute
     compile $ do
@@ -93,11 +71,9 @@ main = hakyll  $ do
     route idRoute
     compile $ do
       posts <- filterM isFeatured =<< recentFirst =<< loadAll "posts/*"
-      projects <- loadAll "projects/*"
 
       let indexCtx =
             listField "posts" postCtx (return posts)
-              <> listField "projects" projectCtx (return projects)
               <> defaultContext
 
       getResourceBody
@@ -125,21 +101,10 @@ postCtx =
 
 --------------------------------------------------------------------------------
 -- The Code I have added to default config
-config :: Configuration
-config =
-  defaultConfiguration
-    { destinationDirectory = "docs"
-    }
-
 pandocCodeStyle :: Style
 pandocCodeStyle = haddock
 
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
-
-projectCtx :: Context String
-projectCtx =
-    dateField "date" "%B %e, %Y"
-    <> defaultContext
 
 -----------------------------------------
