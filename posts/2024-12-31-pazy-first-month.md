@@ -38,4 +38,10 @@ I was offered a 3 month internship starting from 25 November 2024
 
 ### Kickstarting at Pazy
 
-I was really nervous. Its my first time working *professionally*
+I was really nervous. Its my first time working *professionally*. I started using the following things for the first time
+
+- VSCode Git Client
+- Slack
+- Jira
+- Confluence
+- DBeave/ DataGrip
