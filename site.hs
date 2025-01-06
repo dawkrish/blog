@@ -7,7 +7,7 @@ import Hakyll
 import Text.Pandoc.Highlighting
 
 main :: IO ()
-main = hakyll  $ do
+main = hakyll $ do
   match "images/*" $ do
     route idRoute
     compile copyFileCompiler
@@ -21,6 +21,20 @@ main = hakyll  $ do
     compile $
       pandocCompiler
         >>= loadAndApplyTemplate "templates/default.html" defaultContext
+        >>= relativizeUrls
+
+  match "index.md" $ do
+    route $ setExtension "html"
+    compile $ do
+      posts <- filterM isFeatured =<< recentFirst =<< loadAll "posts/*"
+
+      let indexCtx =
+            listField "posts" postCtx (return posts)
+              <> defaultContext
+
+      pandocCompiler
+        >>= applyAsTemplate indexCtx
+        >>= loadAndApplyTemplate "templates/default.html" indexCtx
         >>= relativizeUrls
 
   tags <- buildTags "posts/*" (fromCapture "tags/*.html")
@@ -66,20 +80,6 @@ main = hakyll  $ do
     route idRoute
     compile $ do
       makeItem $ styleToCss pandocCodeStyle
-
-  match "index.md" $ do
-    route $ setExtension "html"
-    compile $ do
-      posts <- filterM isFeatured =<< recentFirst =<< loadAll "posts/*"
-
-      let indexCtx =
-            listField "posts" postCtx (return posts)
-              <> defaultContext
-
-      getResourceBody
-        >>= applyAsTemplate indexCtx
-        >>= loadAndApplyTemplate "templates/default.html" indexCtx
-        >>= relativizeUrls
 
   match "templates/*" $ compile templateBodyCompiler
   where
