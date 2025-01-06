@@ -1,10 +1,11 @@
---------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 
 import Control.Monad
 import Data.Monoid (mappend)
 import Hakyll
+import Text.Pandoc (def)
 import Text.Pandoc.Highlighting
+import Text.Pandoc.Options (WriterOptions (..), writerTOCDepth, writerTableOfContents)
 
 main :: IO ()
 main = hakyll $ do
@@ -56,7 +57,7 @@ main = hakyll $ do
 
   match "posts/*" $ do
     route $ setExtension "html"
-    compile $
+    compile $ do
       pandocCompiler
         >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
         >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
@@ -78,8 +79,7 @@ main = hakyll $ do
 
   create ["css/syntax.css"] $ do
     route idRoute
-    compile $ do
-      makeItem $ styleToCss pandocCodeStyle
+    compile $ makeItem $ styleToCss pandocCodeStyle
 
   match "templates/*" $ compile templateBodyCompiler
   where
@@ -93,12 +93,8 @@ postCtx =
   dateField "date" "%B %e, %Y"
     `mappend` defaultContext
 
---------------------------------------------------------------------------------
--- The Code I have added to default config
 pandocCodeStyle :: Style
 pandocCodeStyle = haddock
 
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
-
------------------------------------------
