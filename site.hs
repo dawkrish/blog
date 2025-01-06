@@ -67,8 +67,8 @@ main = hakyll  $ do
     compile $ do
       makeItem $ styleToCss pandocCodeStyle
 
-  match "index.html" $ do
-    route idRoute
+  match "index.md" $ do
+    route $ setExtension "html"
     compile $ do
       posts <- filterM isFeatured =<< recentFirst =<< loadAll "posts/*"
 
