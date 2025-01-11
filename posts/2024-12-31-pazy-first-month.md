@@ -26,7 +26,7 @@ At least I had a closure, that I was not accepted because my project submission 
 
 ### Pazy to the rescue
 
-I applied to [pazy.io](https://pazy.io) despite in their job listing description "Only for 7th/8th semester students". Luckily I was shortlisted in first round, and I had an short interview on call. I was scheduled with the first round interview :)
+I applied to [Pazy](https://pazy.io) despite in their job listing description "Only for 7th/8th semester students". Luckily I was shortlisted in first round, and I had an short interview on call. I was scheduled with the first round interview :)
 
 First round interview was about **Project Discussion**. The recruiter was in slight doubt, but I got the green light for second round interview.
 
@@ -42,6 +42,46 @@ I was really nervous. Its my first time working *professionally*. I started usin
 
 - VSCode Git Client
 - Slack
-- Jira
-- Confluence
-- DBeave/ DataGrip
+- Jira/ Confluence
+- DBeaver / DataGrip
+
+To escape VSCode, I explored the Emacs Church and came across **Magit**. 
+I am trying to integrate it in my workflow...
+
+We use nodejs at backend and wish we switch to Golang asap. I have convinced our CTO by banging the advantages of a statically typed language ><
+
+The team at pazy is really helpful. Right from the onboarding call to all the team syncups; it feels like a family.
+
+> The product automatically grows if the team grows.
+
+We are trying to create an wholesome, friendly, fast paced environment.
+I can say we sometimes miss robustness in our code but that comes with the expectations from a startup;
+
+For me this is a learning experience. For me it will be amazing to be a *core member* of the engineering-team; but thats a goal & I have no idea what the future looks like.
+
+I really like that the product team is amazing; They hold good deal of power; 
+Product and Engineering syncups are always fun.
+
+> If you want to build a good product; get yourself a good product team !
+
+If you rely on the backend team to build websites, you will have a login page like [[this]](https://news.ycombinator.com/login?goto=news)
+; Or the one you are reading this blog on :/
+
+Lets talk about sales team; without them what the engineers are building will be just another *side project*. 
+I just think they will be the coolest group to hangout with... 
+
+Lets not forget arguably the most important role I think is: <u>Quality Assurance</u>
+If they say its **GTG**, you are all well and good; if they aren't satisfied- its time to cut a new branch and start working again.
+
+I was first time introduced to this position; I had no idea about it. Now I think its like the *CDM* position in Football.
+
+CDM is Central Defensive Midfielder; which basically provides the other midfielders and attackers to attack **freely** and provides the **cover** to the defense.
+
+So the QA provides cover to us (Engineering Team) and provides freedom to the Sales Team to brag about the features !
+
+Well thats what I can think of for now. 
+I plan to write another blog with a title like *6 months at Pazy*...
+
+Hope you liked it and it was not boring... 
+
+Bye Bye ><
